@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Troubleshooting - Terror in Tierhaven Documentation</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <meta name="description" content="Technical troubleshooting guide for Terror in Tierhaven Foundry VTT module">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <h1>Troubleshooting Guide</h1>
+            <p class="subtitle">Technical Support for Terror in Tierhaven</p>
+        </div>
+    </header>
+
+    <!-- Navigation -->
+    <nav class="nav">
+        <div class="container">
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="faq.html">FAQ</a></li>
+                <li><a href="troubleshooting.html" class="active">Troubleshooting</a></li>
+                <li><a href="https://ghostfiregaming.com/drakkenheim/" target="_blank">Official Site</a></li>
+                <li><a href="https://github.com/TWrecksz/sc-tit" target="_blank">GitHub</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="container">
+        <!-- Quick Diagnostics -->
+        <div class="content">
+            <h2>Quick Diagnostics Checklist</h2>
+            <p>Before diving into specific issues, run through this quick checklist:</p>
+            
+            <ul class="checklist">
+                <li>Foundry VTT is version 13 or higher</li>
+                <li>D&D 5e System is version 5.0.0 or higher</li>
+                <li>Module is enabled in world settings</li>
+                <li>Browser cache has been cleared (Ctrl+F5 or Cmd+Shift+R)</li>
+                <li>No conflicting modules are active</li>
+                <li>JavaScript console shows no critical errors (F12 → Console tab)</li>
+            </ul>
+        </div>
+
+        <!-- Installation Problems -->
+        <div class="content">
+            <h2 class="collapsible active">Installation Problems</h2>
+            <div class="collapsible-content active">
+                <div class="faq-item">
+                    <h3>Issue: Module doesn't appear in the module list</h3>
+                    <p><strong>Symptoms:</strong> After installation, the module isn't visible in the module management screen.</p>
+                    
+                    <h4>Solutions:</h4>
+                    <ol>
+                        <li><strong>Verify Installation Path:</strong>
+                            <pre><code>Data/modules/sc-tit/</code></pre>
+                            Should contain module.json and all associated files
+                        </li>
+                        
+                        <li><strong>Check Module Manifest:</strong>
+                            <ul>
+                                <li>Ensure module.json is valid JSON (no syntax errors)</li>
+                                <li>Verify the manifest URL is accessible</li>
+                            </ul>
+                        </li>
+                        
+                        <li><strong>Restart Foundry VTT:</strong>
+                            <ul>
+                                <li>Stop the Foundry server completely</li>
+                                <li>Restart and check again</li>
+                            </ul>
+                        </li>
+                        
+                        <li><strong>Manual Installation:</strong>
+                            <ul>
+                                <li>Download the module ZIP directly</li>
+                                <li>Extract to your modules folder</li>
+                                <li>Ensure folder name is exactly "sc-tit"</li>
+                            </ul>
+                        </li>
+                    </ol>
+                </div>
+
+                <div class="faq-item">
+                    <h3>Issue: "Module compatibility warning" appears</h3>
+                    <p><strong>Symptoms:</strong> Warning about incompatible Foundry or system version.</p>
+                    
+                    <h4>Solutions:</h4>
+                    <ol>
+                        <li>Update Foundry VTT to version 13 or higher</li>
+                        <li>Update D&D 5e system to version 5.0.0 or higher</li>
+                        <li>If already updated, clear cache and reload</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+
+        <!-- Display & Interface Issues -->
+        <div class="content">
+            <h2 class="collapsible">Display & Interface Issues</h2>
+            <div class="collapsible-content">
+                <div class="faq-item">
+                    <h3>Issue: Journal entries show broken formatting</h3>
+                    <p><strong>Symptoms:</strong> Tables don't display correctly, text overlaps, or responsive design fails.</p>
+                    
+                    <h4>Solutions:</h4>
+                    <ol>
+                        <li><strong>Force CSS Reload:</strong>
+                            <pre><code class="language-javascript">// Run in browser console (F12)
+game.modules.get("sc-tit").styles.forEach(s => {
+    document.querySelector(`link[href*="${s}"]`).href += "?reload";
+});</code></pre>
+                        </li>
+                        
+                        <li><strong>Check Custom CSS Conflicts:</strong>
+                            <ul>
+                                <li>Temporarily disable other UI modules</li>
+                                <li>Look for modules that modify journal styling</li>
+                            </ul>
+                        </li>
+                        
+                        <li><strong>Browser-Specific Fix:</strong>
+                            <ul>
+                                <li>Try a different browser (Chrome/Firefox recommended)</li>
+                                <li>Disable browser extensions that modify CSS</li>
+                            </ul>
+                        </li>
+                    </ol>
+                </div>
+
+                <div class="faq-item">
+                    <h3>Issue: Images or tokens not loading</h3>
+                    <p><strong>Symptoms:</strong> Broken image icons, missing artwork, or placeholder tokens.</p>
+                    
+                    <h4>Solutions:</h4>
+                    <ol>
+                        <li><strong>Check Network Connection:</strong>
+                            <ul>
+                                <li>Some images load from GitHub</li>
+                                <li>Verify firewall isn't blocking external resources</li>
+                            </ul>
+                        </li>
+                        
+                        <li><strong>Asset Path Verification:</strong>
+                            <pre><code class="language-javascript">// Check if assets are accessible
+const module = game.modules.get("sc-tit");
+console.log(module.path + "assets/");</code></pre>
+                        </li>
+                        
+                        <li><strong>Re-import Adventure:</strong>
+                            <ul>
+                                <li>Delete the imported adventure (keep a backup!)</li>
+                                <li>Re-import from the compendium</li>
+                            </ul>
+                        </li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+
+        <!-- Gameplay & Automation Issues -->
+        <div class="content">
+            <h2 class="collapsible">Gameplay & Automation Issues</h2>
+            <div class="collapsible-content">
+                <div class="faq-item">
+                    <h3>Issue: Daily monster spawning not working</h3>
+                    <p><strong>Symptoms:</strong> Agogs/Allopines don't spawn in Horace's Hideout each day.</p>
+                    
+                    <h4>Solutions:</h4>
+                    <ol>
+                        <li><strong>Enable World Time:</strong>
+                            <pre><code class="language-javascript">// Check if time is advancing
+console.log(game.time.worldTime);</code></pre>
+                        </li>
+                        
+                        <li><strong>Verify Script Loading:</strong>
+                            <pre><code class="language-javascript">// Check if spawn script is loaded
+console.log(window.HoraceHideoutSpawner);</code></pre>
+                        </li>
+                        
+                        <li><strong>Manual Trigger:</strong>
+                            <pre><code class="language-javascript">// Force spawn check
+if (window.HoraceHideoutSpawner) {
+    window.HoraceHideoutSpawner.checkAndSpawn();
+}</code></pre>
+                        </li>
+                        
+                        <li><strong>Scene Configuration:</strong>
+                            <ul>
+                                <li>Ensure you're on the correct scene (Horace's Hideout)</li>
+                                <li>Check that spawn points aren't blocked</li>
+                                <li>Verify scene is active, not just viewed</li>
+                            </ul>
+                        </li>
+                    </ol>
+                </div>
+
+                <div class="faq-item">
+                    <h3>Issue: Contamination effects not applying</h3>
+                    <p><strong>Symptoms:</strong> Contamination mechanics don't trigger or apply to characters.</p>
+                    
+                    <h4>Solutions:</h4>
+                    <ol>
+                        <li><strong>Check Active Effects:</strong>
+                            <ul>
+                                <li>Ensure D&D 5e system's active effects are enabled</li>
+                                <li>Verify no modules are blocking effect application</li>
+                            </ul>
+                        </li>
+                        
+                        <li><strong>Manual Application:</strong>
+                            <pre><code class="language-javascript">// Apply contamination to selected token
+const contamination = game.items.getName("Contamination");
+if (contamination && canvas.tokens.controlled[0]) {
+    canvas.tokens.controlled[0].actor.createEmbeddedDocuments("Item", 
+        [contamination.toObject()]);
+}</code></pre>
+                        </li>
+                        
+                        <li><strong>System Compatibility:</strong>
+                            <ul>
+                                <li>Update D&D 5e system to latest version</li>
+                                <li>Check for conflicting automation modules</li>
+                            </ul>
+                        </li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+
+        <!-- Performance Issues -->
+        <div class="content">
+            <h2 class="collapsible">Performance Issues</h2>
+            <div class="collapsible-content">
+                <div class="faq-item">
+                    <h3>Issue: Module causes lag or slow loading</h3>
+                    <p><strong>Symptoms:</strong> Foundry becomes sluggish after enabling the module.</p>
+                    
+                    <h4>Solutions:</h4>
+                    <ol>
+                        <li><strong>Optimize Asset Loading:</strong>
+                            <pre><code class="language-javascript">// Preload critical assets
+const paths = [
+    "modules/sc-tit/assets/converted/tierhaven-overview.webp",
+    // Add other critical assets
+];
+paths.forEach(path => {
+    const img = new Image();
+    img.src = path;
+});</code></pre>
+                        </li>
+                        
+                        <li><strong>Reduce Active Scenes:</strong>
+                            <ul>
+                                <li>Keep only necessary scenes active</li>
+                                <li>Archive completed locations</li>
+                            </ul>
+                        </li>
+                        
+                        <li><strong>Module Conflicts:</strong>
+                            <ul>
+                                <li>Disable modules one by one to identify conflicts</li>
+                                <li>Common culprits: Token animation, weather effects</li>
+                            </ul>
+                        </li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+
+        <!-- Advanced Troubleshooting -->
+        <div class="content">
+            <h2 class="collapsible">Advanced Troubleshooting</h2>
+            <div class="collapsible-content">
+                <div class="faq-item">
+                    <h3>Debug Mode</h3>
+                    <p>Enable detailed logging to diagnose issues:</p>
+                    <pre><code class="language-javascript">// Enable debug mode
+CONFIG.debug.hooks = true;
+CONFIG.debug.modules = true;
+
+// Log module activity
+Hooks.on("ready", () => {
+    console.log("SC-TIT Module Status:", game.modules.get("sc-tit"));
+});</code></pre>
+                </div>
+
+                <div class="faq-item">
+                    <h3>Database Cleanup</h3>
+                    <p>If corruption is suspected:</p>
+                    <pre><code class="language-javascript">// Clean orphaned data
+game.actors.forEach(a => {
+    if (a.data.flags["sc-tit"] && !a.pack) {
+        console.log("Cleaning actor:", a.name);
+        a.unsetFlag("sc-tit", null);
+    }
+});</code></pre>
+                </div>
+
+                <div class="faq-item">
+                    <h3>Manual Script Execution</h3>
+                    <p>For testing specific features:</p>
+                    <pre><code class="language-javascript">// Test contamination system
+const testContamination = async () => {
+    const actor = game.actors.getName("Test Character");
+    if (!actor) return ui.notifications.error("No test character found");
+    
+    const roll = await new Roll("1d20").evaluate();
+    const contaminated = roll.total <= 10;
+    
+    ui.notifications.info(`Contamination check: ${roll.total} - ${contaminated ? "Failed!" : "Passed!"}`);
+};
+
+testContamination();</code></pre>
+                </div>
+            </div>
+        </div>
+
+        <!-- Emergency Fixes -->
+        <div class="content">
+            <h2 class="collapsible">Emergency Fixes</h2>
+            <div class="collapsible-content">
+                <div class="faq-item">
+                    <h3>Complete Reset</h3>
+                    <p>If all else fails, perform a clean reinstall:</p>
+                    
+                    <ol>
+                        <li><strong>Backup Your World:</strong>
+                            <ul>
+                                <li>Export all actors, items, and journals you've modified</li>
+                                <li>Save your world folder</li>
+                            </ul>
+                        </li>
+                        
+                        <li><strong>Clean Uninstall:</strong>
+                            <pre><code># Remove module folder
+rm -rf Data/modules/sc-tit</code></pre>
+                        </li>
+                        
+                        <li><strong>Fresh Install:</strong>
+                            <ul>
+                                <li>Download latest version</li>
+                                <li>Install through Foundry or manually</li>
+                                <li>Re-import adventure</li>
+                            </ul>
+                        </li>
+                        
+                        <li><strong>Restore Customizations:</strong>
+                            <ul>
+                                <li>Import your backed-up content</li>
+                                <li>Reapply world-specific settings</li>
+                            </ul>
+                        </li>
+                    </ol>
+                </div>
+
+                <div class="faq-item">
+                    <h3>Recovery Mode</h3>
+                    <p>If the module breaks your world:</p>
+                    <pre><code class="language-javascript">// Disable module via console
+game.settings.set("core", "moduleConfiguration", {
+    ...game.settings.get("core", "moduleConfiguration"),
+    "sc-tit": false
+});
+
+// Then reload
+window.location.reload();</code></pre>
+                </div>
+            </div>
+        </div>
+
+        <!-- Getting Help -->
+        <div class="content">
+            <h2>Getting Help</h2>
+            
+            <div class="faq-item">
+                <h3>Before Requesting Support</h3>
+                <ol>
+                    <li><strong>Document the Issue:</strong>
+                        <ul>
+                            <li>Foundry VTT version</li>
+                            <li>D&D 5e system version</li>
+                            <li>List of active modules</li>
+                            <li>Browser and OS</li>
+                            <li>Steps to reproduce</li>
+                            <li>Screenshots if applicable</li>
+                        </ul>
+                    </li>
+                    
+                    <li><strong>Check Console Errors:</strong>
+                        <ul>
+                            <li>Press F12 → Console tab</li>
+                            <li>Look for red error messages</li>
+                            <li>Copy full error text</li>
+                        </ul>
+                    </li>
+                    
+                    <li><strong>Test in Safe Mode:</strong>
+                        <ul>
+                            <li>Disable all modules except sc-tit</li>
+                            <li>Try to reproduce the issue</li>
+                        </ul>
+                    </li>
+                </ol>
+            </div>
+
+            <div class="faq-item">
+                <h3>Support Channels</h3>
+                <p><strong>Primary Support:</strong></p>
+                <ul>
+                    <li><a href="https://ghostfiregaming.com/contact" target="_blank">Ghostfire Gaming Contact</a></li>
+                    <li>Include "Terror in Tierhaven Technical Issue" in subject</li>
+                </ul>
+                
+                <p><strong>Community Support:</strong></p>
+                <ul>
+                    <li>Ghostfire Gaming Discord Server</li>
+                    <li>Foundry VTT Discord #module-troubleshooting</li>
+                </ul>
+                
+                <p><strong>Developer Contact:</strong></p>
+                <ul>
+                    <li>Discord: teekz1763 (Ghostfire Tyler)</li>
+                    <li>GitHub: <a href="https://github.com/TWrecksz/sc-tit" target="_blank">sc-tit repository</a></li>
+                </ul>
+            </div>
+
+            <div class="faq-item">
+                <h3>Reporting Format</h3>
+                <pre><code>**Issue Title:** [Brief description]
+
+**Environment:**
+- Foundry: [version]
+- D&D 5e: [version]
+- Browser: [name and version]
+- OS: [operating system]
+
+**Steps to Reproduce:**
+1. [First step]
+2. [Second step]
+3. [What happens vs. what should happen]
+
+**Error Messages:**
+[Paste console errors here]
+
+**Screenshots:** [Attach if relevant]
+
+**Attempted Solutions:**
+- [What you've already tried]</code></pre>
+            </div>
+        </div>
+
+        <!-- Important Note -->
+        <div class="content">
+            <div class="alert alert-warning">
+                <strong>Remember:</strong> Always backup your world before attempting major troubleshooting steps!
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 Ghostfire Gaming. Terror in Tierhaven is a product of <a href="https://ghostfiregaming.com" target="_blank">Ghostfire Gaming</a>.</p>
+            <p>Foundry VTT Module Version 1.0.7 | Documentation Last Updated: 2024</p>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <a href="#" class="back-to-top" id="backToTop">↑</a>
+
+    <!-- JavaScript -->
+    <script src="js/main.js"></script>
+</body>
+</html>

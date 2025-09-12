@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FAQ - Terror in Tierhaven Documentation</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <meta name="description" content="Frequently Asked Questions about Terror in Tierhaven Foundry VTT module">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <h1>Frequently Asked Questions</h1>
+            <p class="subtitle">Terror in Tierhaven - Foundry VTT Module</p>
+        </div>
+    </header>
+
+    <!-- Navigation -->
+    <nav class="nav">
+        <div class="container">
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="faq.html" class="active">FAQ</a></li>
+                <li><a href="troubleshooting.html">Troubleshooting</a></li>
+                <li><a href="https://ghostfiregaming.com/drakkenheim/" target="_blank">Official Site</a></li>
+                <li><a href="https://github.com/TWrecksz/sc-tit" target="_blank">GitHub</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="container">
+        <!-- Search Box -->
+        <div class="content">
+            <div class="search-box">
+                <input type="text" id="faqSearch" placeholder="Search FAQ...">
+                <button onclick="searchFAQ()">🔍</button>
+            </div>
+        </div>
+
+        <!-- General Questions -->
+        <div class="content">
+            <h2 class="collapsible active">General Questions</h2>
+            <div class="collapsible-content active">
+                <div class="faq-item">
+                    <div class="faq-question">Q: What is Terror in Tierhaven?</div>
+                    <div class="faq-answer">
+                        <strong>A:</strong> Terror in Tierhaven is a D&D 5e adventure module for Foundry VTT set in the dark world of Drakkenheim. It features a city devastated by a mysterious meteor shower, where players must navigate political intrigue, survive horrific mutations, and uncover cosmic mysteries.
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">Q: What level characters is this adventure designed for?</div>
+                    <div class="faq-answer">
+                        <strong>A:</strong> This adventure is optimized for characters of levels 3-5, though it can be adjusted for higher or lower level parties with minor modifications to encounter difficulty.
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">Q: How long does this adventure typically take to complete?</div>
+                    <div class="faq-answer">
+                        <strong>A:</strong> Most groups complete Terror in Tierhaven in 3-5 sessions of 3-4 hours each, depending on play style and how thoroughly they explore the various locations and side quests.
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">Q: Is this a standalone adventure or part of a larger campaign?</div>
+                    <div class="faq-answer">
+                        <strong>A:</strong> While Terror in Tierhaven can be run as a standalone adventure, it's designed to integrate seamlessly with the larger Drakkenheim campaign setting and can serve as an introduction to the world or a side quest within an ongoing campaign.
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Installation & Setup -->
+        <div class="content">
+            <h2 class="collapsible">Installation & Setup</h2>
+            <div class="collapsible-content">
+                <div class="faq-item">
+                    <div class="faq-question">Q: What are the system requirements?</div>
+                    <div class="faq-answer">
+                        <strong>A:</strong> You need:
+                        <ul>
+                            <li>Foundry VTT Version 13 or higher (verified with v13)</li>
+                            <li>D&D 5e System Version 5.0.0 or higher</li>
+                            <li>The Drakkenheim setting module (recommended but not required)</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">Q: How do I install the module?</div>
+                    <div class="faq-answer">
+                        <strong>A:</strong> 
+                        <ol>
+                            <li>In Foundry VTT, go to the setup page</li>
+                            <li>Click "Add-on Modules"</li>
+                            <li>Click "Install Module"</li>
+                            <li>Search for "Sebastian Crowes Terror in Tierhaven"</li>
+                            <li>Click "Install"</li>
+                            <li>Enable the module in your world's module settings</li>
+                        </ol>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">Q: Why is the module protected?</div>
+                    <div class="faq-answer">
+                        <strong>A:</strong> The module is protected to preserve its commercial integrity and prevent unauthorized redistribution. This doesn't affect gameplay or customization within your own world.
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">Q: Can I modify the content for my own game?</div>
+                    <div class="faq-answer">
+                        <strong>A:</strong> Yes! Once imported into your world, you can freely modify scenes, actors, items, and journal entries to suit your campaign needs. The protection only prevents module-level modifications.
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Content & Features -->
+        <div class="content">
+            <h2 class="collapsible">Content & Features</h2>
+            <div class="collapsible-content">
+                <div class="faq-item">
+                    <div class="faq-question">Q: What maps and scenes are included?</div>
+                    <div class="faq-answer">
+                        <strong>A:</strong> The module includes:
+                        <ul>
+                            <li>Tierhaven city overview map</li>
+                            <li>Whittaker Farm (interior and exterior)</li>
+                            <li>Hurlich Farm (ground floor, upper floor, and basement)</li>
+                            <li>Horace's Hideout (two dungeon levels)</li>
+                            <li>All maps include pre-configured walls, lighting, and teleport zones</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">Q: What's the Daily Monster Spawning System?</div>
+                    <div class="faq-answer">
+                        <strong>A:</strong> This is an automated feature that spawns 1d4 Agogs or Allopines each in-game day in Horace's Hideout. It uses Foundry's world time tracking, so monsters appear based on your game's calendar, not real-world time. This adds dynamic encounters and reinforces the ongoing corruption threat.
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">Q: Are there pre-made NPCs and monsters?</div>
+                    <div class="faq-answer">
+                        <strong>A:</strong> Yes! The module includes:
+                        <ul>
+                            <li>Complete stat blocks for all unique NPCs (Gunther Hurlich, Horace, The Spawn, etc.)</li>
+                            <li>Custom monsters specific to Drakkenheim (Agogs, Allopines, Animated Delerium Sludge)</li>
+                            <li>Pre-configured tokens with appropriate artwork</li>
+                            <li>All creatures have contamination effects and special abilities integrated</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">Q: Is the contamination system included?</div>
+                    <div class="faq-answer">
+                        <strong>A:</strong> Yes, the module includes contamination mechanics, mutation tables, and effects. These are integrated into monster abilities and environmental hazards throughout the adventure.
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Gameplay Questions -->
+        <div class="content">
+            <h2 class="collapsible">Gameplay Questions</h2>
+            <div class="collapsible-content">
+                <div class="faq-item">
+                    <div class="faq-question">Q: How do I handle contamination effects?</div>
+                    <div class="faq-answer">
+                        <strong>A:</strong> Contamination rules are included in the appendices. Generally:
+                        <ul>
+                            <li>Exposure to delerium or corrupted creatures may require saving throws</li>
+                            <li>Failed saves accumulate contamination levels</li>
+                            <li>Higher contamination leads to mutations (roll on included tables)</li>
+                            <li>Remedies and protections are available through story progression</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">Q: Can players join different factions?</div>
+                    <div class="faq-answer">
+                        <strong>A:</strong> Yes! The adventure supports multiple faction allegiances:
+                        <ul>
+                            <li>The Hooded Lanterns (investigators of the supernatural)</li>
+                            <li>Queen's Men (royal agents)</li>
+                            <li>Followers of the Falling Fire (cult worshippers)</li>
+                            <li>Independent agents</li>
+                        </ul>
+                        Each faction offers different approaches and rewards.
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">Q: What if my players want to avoid combat?</div>
+                    <div class="faq-answer">
+                        <strong>A:</strong> Terror in Tierhaven supports multiple play styles:
+                        <ul>
+                            <li>Many encounters can be resolved through diplomacy or stealth</li>
+                            <li>Investigation and roleplay are emphasized throughout</li>
+                            <li>Social encounters with faction representatives provide alternatives</li>
+                            <li>However, some confrontations are central to the plot</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">Q: How do I adjust difficulty for different party sizes?</div>
+                    <div class="faq-answer">
+                        <strong>A:</strong> For parties outside the standard 4-5 players:
+                        <ul>
+                            <li><strong>3 or fewer players:</strong> Reduce enemy numbers by 25-30%, lower HP for bosses</li>
+                            <li><strong>6 or more players:</strong> Add 1-2 additional enemies per encounter, increase boss HP by 20-30%</li>
+                            <li>Use the encounter difficulty guidelines in the D&D 5e DMG</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Technical Support -->
+        <div class="content">
+            <h2 class="collapsible">Technical Support</h2>
+            <div class="collapsible-content">
+                <div class="faq-item">
+                    <div class="faq-question">Q: The journal entries aren't displaying correctly. What should I do?</div>
+                    <div class="faq-answer">
+                        <strong>A:</strong> Check that:
+                        <ol>
+                            <li>You're using Foundry v13 or higher</li>
+                            <li>The module's CSS file (style.css) is properly loaded</li>
+                            <li>Try refreshing your browser (F5)</li>
+                            <li>Clear your browser cache if issues persist</li>
+                        </ol>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">Q: Why aren't the monsters spawning daily in Horace's Hideout?</div>
+                    <div class="faq-answer">
+                        <strong>A:</strong> Ensure that:
+                        <ol>
+                            <li>World time is enabled and advancing in your game</li>
+                            <li>The horace-hideout-daily-spawn.js script is active (check module settings)</li>
+                            <li>You have the correct scene loaded (Horace's Hideout)</li>
+                            <li>The spawning areas aren't blocked by walls or other tokens</li>
+                        </ol>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">Q: Some tokens or images aren't loading. How do I fix this?</div>
+                    <div class="faq-answer">
+                        <strong>A:</strong> 
+                        <ol>
+                            <li>Verify all module files downloaded correctly</li>
+                            <li>Check your internet connection (some assets may load from external sources)</li>
+                            <li>Try re-importing the adventure from the compendium</li>
+                            <li>Ensure no browser extensions are blocking content</li>
+                        </ol>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">Q: Can I use this with other D&D 5e modules?</div>
+                    <div class="faq-answer">
+                        <strong>A:</strong> Yes! Terror in Tierhaven is compatible with most D&D 5e modules. Popular combinations include:
+                        <ul>
+                            <li>Drakkenheim core modules (recommended for full experience)</li>
+                            <li>Token enhancement modules (Token Magic FX, etc.)</li>
+                            <li>UI improvement modules (minimal conflicts expected)</li>
+                            <li>Combat automation modules (Midi-QOL, etc.)</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Content Customization -->
+        <div class="content">
+            <h2 class="collapsible">Content Customization</h2>
+            <div class="collapsible-content">
+                <div class="faq-item">
+                    <div class="faq-question">Q: How can I integrate this with my existing campaign?</div>
+                    <div class="faq-answer">
+                        <strong>A:</strong> Several hooks are provided:
+                        <ul>
+                            <li>Characters can be sent to investigate the meteor impact</li>
+                            <li>Faction missions can draw them to Tierhaven</li>
+                            <li>Random encounters while traveling can lead to the area</li>
+                            <li>The contamination spreading could threaten nearby settlements</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">Q: Can I change the faction dynamics?</div>
+                    <div class="faq-answer">
+                        <strong>A:</strong> Absolutely! The factions are designed to be flexible:
+                        <ul>
+                            <li>Add new factions relevant to your world</li>
+                            <li>Change faction goals and motivations</li>
+                            <li>Alter NPC allegiances to create different conflicts</li>
+                            <li>Remove factions that don't fit your campaign</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">Q: How do I scale this for higher-level parties?</div>
+                    <div class="faq-answer">
+                        <strong>A:</strong> For parties above level 5:
+                        <ul>
+                            <li>Add class levels to major NPCs</li>
+                            <li>Include additional corrupted creatures</li>
+                            <li>Increase contamination save DCs</li>
+                            <li>Add legendary actions to boss encounters</li>
+                            <li>Introduce more powerful delerium-based items</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Community & Support -->
+        <div class="content">
+            <h2 class="collapsible">Community & Support</h2>
+            <div class="collapsible-content">
+                <div class="faq-item">
+                    <div class="faq-question">Q: Where can I get additional help?</div>
+                    <div class="faq-answer">
+                        <strong>A:</strong> 
+                        <ul>
+                            <li>Visit <a href="https://ghostfiregaming.com/drakkenheim/" target="_blank">Ghostfire Gaming</a> for official support</li>
+                            <li>Join the Ghostfire Gaming Discord community</li>
+                            <li>Check the <a href="https://github.com/TWrecksz/sc-tit" target="_blank">GitHub repository</a> for updates</li>
+                            <li>Contact Ghostfire Tyler on Discord: teekz1763</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">Q: Can I stream or create content featuring this module?</div>
+                    <div class="faq-answer">
+                        <strong>A:</strong> Yes! Ghostfire Gaming encourages content creation. Please credit the module and Ghostfire Gaming in your content. Commercial use beyond personal streaming requires permission.
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">Q: Will there be updates or additional content?</div>
+                    <div class="faq-answer">
+                        <strong>A:</strong> Updates are released periodically to fix bugs and improve compatibility. Check the changelog for the latest updates. Additional Drakkenheim content is regularly released by Ghostfire Gaming.
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">Q: I found a bug. How do I report it?</div>
+                    <div class="faq-answer">
+                        <strong>A:</strong> Report bugs through:
+                        <ol>
+                            <li>The official <a href="https://ghostfiregaming.com/contact" target="_blank">Ghostfire Gaming contact page</a></li>
+                            <li>The GitHub repository issues section</li>
+                            <li>The Ghostfire Gaming Discord server</li>
+                        </ol>
+                        Include your Foundry version, D&D system version, and steps to reproduce the issue.
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Quick Links -->
+        <div class="content">
+            <div class="alert alert-info">
+                <strong>Need more help?</strong> Check our <a href="troubleshooting.html">Troubleshooting Guide</a> for detailed technical solutions.
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 Ghostfire Gaming. Terror in Tierhaven is a product of <a href="https://ghostfiregaming.com" target="_blank">Ghostfire Gaming</a>.</p>
+            <p>Foundry VTT Module Version 1.0.7 | Documentation Last Updated: 2024</p>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <a href="#" class="back-to-top" id="backToTop">↑</a>
+
+    <!-- JavaScript -->
+    <script src="js/main.js"></script>
+</body>
+</html>
