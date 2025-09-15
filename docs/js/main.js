@@ -366,12 +366,35 @@ function createPageBorder() {
     document.body.appendChild(border);
 }
 
-// Create toxic haze overlay
+// Create toxic haze overlay with multiple cloud layers
 function createToxicHaze() {
+    // Main cloud layer
     const haze = document.createElement('div');
     haze.className = 'toxic-haze';
     haze.setAttribute('aria-hidden', 'true');
     document.body.appendChild(haze);
+
+    // Add secondary cloud layer for depth
+    const secondaryHaze = document.createElement('div');
+    secondaryHaze.className = 'toxic-haze-secondary';
+    secondaryHaze.setAttribute('aria-hidden', 'true');
+    secondaryHaze.style.cssText = `
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 180%;
+        height: 100%;
+        background:
+            radial-gradient(ellipse 200px 100px at 40% 20%, rgba(139, 71, 139, 0.12) 0%, transparent 60%),
+            radial-gradient(ellipse 150px 75px at 80% 60%, rgba(155, 77, 155, 0.08) 0%, transparent 70%),
+            radial-gradient(ellipse 180px 90px at 10% 80%, rgba(90, 42, 90, 0.10) 0%, transparent 65%);
+        animation: driftingCloudsSlow 35s linear infinite reverse;
+        pointer-events: none;
+        z-index: 1;
+        opacity: 0.4;
+        will-change: transform;
+    `;
+    document.body.appendChild(secondaryHaze);
 }
 
 // Create floating Delerium crystals with real images
@@ -396,8 +419,8 @@ function createCrystal(index) {
 
     // Randomly choose crystal image
     const crystalImages = [
-        'images/delerium-chunk-1.webp?v=6',
-        'images/delerium-chunk-5.webp?v=6'
+        'images/delerium-chunk-1.webp?v=7',
+        'images/delerium-chunk-5.webp?v=7'
     ];
 
     const randomImage = crystalImages[Math.floor(Math.random() * crystalImages.length)];
