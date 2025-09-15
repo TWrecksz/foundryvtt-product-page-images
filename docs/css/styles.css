@@ -107,7 +107,7 @@ body::before {
   }
 }
 
-/* Floating Delerium Crystals Animation */
+/* Real Delerium Crystal Floating Animation */
 body::after {
   content: '';
   position: fixed;
@@ -116,39 +116,120 @@ body::after {
   width: 100%;
   height: 100%;
   background-image:
-    radial-gradient(4px 4px at 100px 100px, rgba(155, 77, 155, 0.4), transparent),
-    radial-gradient(3px 3px at 300px 200px, rgba(214, 123, 214, 0.3), transparent),
-    radial-gradient(2px 2px at 500px 150px, rgba(122, 59, 122, 0.5), transparent);
+    url('../TiT-HoAB-Product-Page-Images/TiT/delerium-chunk-1.webp'),
+    url('../TiT-HoAB-Product-Page-Images/TiT/delerium-chunk-5.webp'),
+    url('../TiT-HoAB-Product-Page-Images/TiT/delerium-chunk-1.webp');
+  background-size: 40px 40px, 35px 35px, 30px 30px;
+  background-position: 15% 20%, 85% 60%, 70% 30%;
   background-repeat: no-repeat;
-  animation: floatCrystals 25s ease-in-out infinite;
+  opacity: 0.3;
+  animation: floatRealCrystals 20s ease-in-out infinite;
   pointer-events: none;
   z-index: -1;
 }
 
-@keyframes floatCrystals {
+@keyframes floatRealCrystals {
   0%, 100% {
     transform: translateY(0px) translateX(0px) rotate(0deg);
     opacity: 0.2;
+    filter: brightness(0.8) hue-rotate(0deg);
   }
   25% {
-    transform: translateY(-30px) translateX(10px) rotate(90deg);
+    transform: translateY(-50px) translateX(20px) rotate(90deg);
     opacity: 0.6;
+    filter: brightness(1.2) hue-rotate(10deg);
   }
   50% {
-    transform: translateY(-20px) translateX(-15px) rotate(180deg);
+    transform: translateY(-30px) translateX(-25px) rotate(180deg);
     opacity: 0.4;
+    filter: brightness(1.0) hue-rotate(20deg);
   }
   75% {
-    transform: translateY(-40px) translateX(5px) rotate(270deg);
+    transform: translateY(-60px) translateX(15px) rotate(270deg);
+    opacity: 0.8;
+    filter: brightness(1.4) hue-rotate(30deg);
+  }
+}
+
+/* Vertical Book Edge Border */
+.page-border {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 60px;
+  height: 100vh;
+  background-image: url('../TiT-HoAB-Product-Page-Images/HoAB/Subchapter_longer.png');
+  background-size: 60px auto;
+  background-repeat: repeat-y;
+  background-position: left center;
+  opacity: 0.6;
+  z-index: -2;
+  pointer-events: none;
+  animation: borderGlow 3s ease-in-out infinite alternate;
+}
+
+@keyframes borderGlow {
+  0% {
+    opacity: 0.4;
+    filter: brightness(0.8);
+  }
+  100% {
+    opacity: 0.8;
+    filter: brightness(1.2) contrast(1.1);
+  }
+}
+
+/* Purple Toxic Haze Overlay */
+.toxic-haze {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background:
+    radial-gradient(ellipse at 30% 20%, rgba(155, 77, 155, 0.15) 0%, transparent 50%),
+    radial-gradient(ellipse at 70% 80%, rgba(122, 59, 122, 0.12) 0%, transparent 60%),
+    radial-gradient(ellipse at 50% 50%, rgba(90, 42, 90, 0.08) 0%, transparent 70%);
+  backdrop-filter: blur(1px);
+  animation: toxicFlow 15s ease-in-out infinite;
+  pointer-events: none;
+  z-index: -1;
+  mix-blend-mode: multiply;
+}
+
+@keyframes toxicFlow {
+  0%, 100% {
+    transform: translateX(0px) translateY(0px) scale(1);
+    opacity: 0.6;
+  }
+  33% {
+    transform: translateX(20px) translateY(-10px) scale(1.1);
+    opacity: 0.8;
+  }
+  66% {
+    transform: translateX(-15px) translateY(15px) scale(0.9);
     opacity: 0.7;
   }
 }
 
-/* Container and Layout */
+/* Container and Layout with Book Border Offset */
 .container {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 20px;
+  padding: 20px 20px 20px 80px; /* Extra left padding for book border */
+  position: relative;
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 15px 15px 15px 70px; /* Reduced for mobile */
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    padding: 10px 10px 10px 60px; /* Minimal for small screens */
+  }
 }
 
 /* Enhanced Header with Glowing Effects */
@@ -857,6 +938,45 @@ tr:hover {
 
   .nav::before {
     animation-duration: 3s;
+  }
+
+  .page-border {
+    width: 50px;
+    opacity: 0.5;
+    animation-duration: 4s;
+  }
+
+  .toxic-haze {
+    animation-duration: 20s;
+    opacity: 0.4;
+  }
+}
+
+@media (max-width: 480px) {
+  .page-border {
+    width: 40px;
+    opacity: 0.4;
+  }
+
+  .toxic-haze {
+    animation-duration: 25s;
+    opacity: 0.3;
+  }
+}
+
+/* Respect users' motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  .page-border,
+  .toxic-haze {
+    animation: none;
   }
 }
 

@@ -1,7 +1,14 @@
-// Terror in Tierhaven Documentation - Interactive JavaScript
+// Terror in Tierhaven Documentation - Enhanced Interactive JavaScript
+// Enhanced with Drakkenheim Immersion Effects
 
-// Back to Top Button functionality
+// Initialize Drakkenheim immersive elements
 document.addEventListener('DOMContentLoaded', function() {
+    // Create immersive elements
+    createPageBorder();
+    createToxicHaze();
+    createFloatingDelieriumCrystals();
+
+    // Initialize existing functionality
     const backToTop = document.getElementById('backToTop');
     
     if (backToTop) {
@@ -331,13 +338,175 @@ function initThemeToggle() {
 // Initialize on load
 window.addEventListener('load', function() {
     initThemeToggle();
-    
+
     // Add loading animation removal
     const loading = document.querySelector('.loading');
     if (loading) {
         loading.style.display = 'none';
     }
-    
+
+    // Start periodic crystal spawning
+    setInterval(spawnRandomCrystal, 8000);
+
     // Log successful load
-    console.log('Terror in Tierhaven Documentation loaded successfully');
+    console.log('Terror in Tierhaven Documentation loaded successfully - Drakkenheim immersion active');
 });
+
+// ===== DRAKKENHEIM IMMERSION FUNCTIONS =====
+
+// Create vertical book border element
+function createPageBorder() {
+    const border = document.createElement('div');
+    border.className = 'page-border';
+    border.setAttribute('aria-hidden', 'true');
+    document.body.appendChild(border);
+}
+
+// Create toxic haze overlay
+function createToxicHaze() {
+    const haze = document.createElement('div');
+    haze.className = 'toxic-haze';
+    haze.setAttribute('aria-hidden', 'true');
+    document.body.appendChild(haze);
+}
+
+// Create floating Delerium crystals with real images
+function createFloatingDelieriumCrystals() {
+    // Reduce crystals on mobile for performance
+    const isMobile = window.innerWidth <= 768;
+    const crystalCount = isMobile ? 3 : 5;
+
+    // Create multiple crystal layers for depth
+    for (let i = 0; i < crystalCount; i++) {
+        setTimeout(() => {
+            createCrystal(i);
+        }, i * (isMobile ? 3000 : 2000));
+    }
+}
+
+// Create individual floating crystal
+function createCrystal(index) {
+    const crystal = document.createElement('div');
+    crystal.className = 'floating-crystal';
+    crystal.setAttribute('aria-hidden', 'true');
+
+    // Randomly choose crystal image
+    const crystalImages = [
+        '../TiT-HoAB-Product-Page-Images/TiT/delerium-chunk-1.webp',
+        '../TiT-HoAB-Product-Page-Images/TiT/delerium-chunk-5.webp'
+    ];
+
+    const randomImage = crystalImages[Math.floor(Math.random() * crystalImages.length)];
+    const size = 20 + Math.random() * 40; // 20-60px
+    const startX = Math.random() * window.innerWidth;
+    const startY = window.innerHeight + 50;
+
+    crystal.style.cssText = `
+        position: fixed;
+        width: ${size}px;
+        height: ${size}px;
+        background-image: url('${randomImage}');
+        background-size: cover;
+        background-repeat: no-repeat;
+        left: ${startX}px;
+        top: ${startY}px;
+        opacity: 0;
+        z-index: -1;
+        pointer-events: none;
+        filter: brightness(0.8) hue-rotate(${Math.random() * 60}deg);
+        animation: floatUp 15s linear infinite;
+        animation-delay: ${index * 0.5}s;
+    `;
+
+    document.body.appendChild(crystal);
+
+    // Remove crystal after animation
+    setTimeout(() => {
+        if (crystal.parentNode) {
+            crystal.parentNode.removeChild(crystal);
+        }
+    }, 15000 + (index * 500));
+}
+
+// Spawn random crystals periodically
+function spawnRandomCrystal() {
+    const isMobile = window.innerWidth <= 768;
+    const spawnChance = isMobile ? 0.6 : 0.3; // Lower spawn rate on mobile
+
+    if (Math.random() > spawnChance) {
+        createCrystal(Math.floor(Math.random() * 10));
+    }
+}
+
+// Enhanced scroll effects with crystal interactions
+function enhanceScrollEffects() {
+    let ticking = false;
+
+    function updateScrollEffects() {
+        const scrollPercent = window.pageYOffset / (document.documentElement.scrollHeight - window.innerHeight);
+
+        // Enhance toxic haze based on scroll
+        const haze = document.querySelector('.toxic-haze');
+        if (haze) {
+            haze.style.opacity = 0.4 + (scrollPercent * 0.4);
+            haze.style.filter = `blur(${1 + scrollPercent * 2}px)`;
+        }
+
+        // Enhance border glow based on scroll
+        const border = document.querySelector('.page-border');
+        if (border) {
+            border.style.filter = `brightness(${0.8 + scrollPercent * 0.6}) contrast(${1 + scrollPercent * 0.3})`;
+        }
+
+        ticking = false;
+    }
+
+    window.addEventListener('scroll', function() {
+        if (!ticking) {
+            requestAnimationFrame(updateScrollEffects);
+            ticking = true;
+        }
+    });
+}
+
+// Initialize enhanced scroll effects
+document.addEventListener('DOMContentLoaded', function() {
+    enhanceScrollEffects();
+});
+
+// Add floating crystal animation keyframes via JavaScript
+const style = document.createElement('style');
+style.textContent = `
+    @keyframes floatUp {
+        0% {
+            transform: translateY(0px) translateX(0px) rotate(0deg) scale(0.5);
+            opacity: 0;
+        }
+        10% {
+            opacity: 0.6;
+            transform: translateY(-100px) translateX(20px) rotate(36deg) scale(1);
+        }
+        50% {
+            opacity: 0.8;
+            transform: translateY(-50vh) translateX(-30px) rotate(180deg) scale(1.2);
+            filter: brightness(1.2) hue-rotate(30deg);
+        }
+        90% {
+            opacity: 0.3;
+            transform: translateY(-90vh) translateX(40px) rotate(324deg) scale(0.8);
+        }
+        100% {
+            transform: translateY(-100vh) translateX(60px) rotate(360deg) scale(0.3);
+            opacity: 0;
+        }
+    }
+
+    .floating-crystal {
+        transition: filter 0.3s ease;
+    }
+
+    .floating-crystal:hover {
+        filter: brightness(1.5) hue-rotate(45deg) !important;
+    }
+`;
+document.head.appendChild(style);
