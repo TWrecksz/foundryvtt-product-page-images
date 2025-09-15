@@ -151,18 +151,18 @@ body::after {
   }
 }
 
-/* Vertical Book Edge Border */
+/* Vertical Delerium Book Edge Border */
 .page-border {
   position: fixed;
   left: 0;
   top: 0;
   width: 60px;
   height: 100vh;
-  background-image: url('../TiT-HoAB-Product-Page-Images/HoAB/Subchapter_longer.png');
+  background-image: url('../TiT-HoAB-Product-Page-Images/TiT/book-delerium-edge.webp');
   background-size: 60px auto;
   background-repeat: repeat-y;
   background-position: left center;
-  opacity: 0.6;
+  opacity: 0.7;
   z-index: -2;
   pointer-events: none;
   animation: borderGlow 3s ease-in-out infinite alternate;
