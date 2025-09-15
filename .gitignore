@@ -1,0 +1,56 @@
+# AI/Claude Code Files
+CLAUDE.md
+.claude/
+.claude.md
+*claude*
+*.ai
+.cursor/
+.cursorrules
+.copilot/
+.github/copilot-instructions.md
+
+# IDE and Editor Files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS Generated Files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Logs and Runtime
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Temporary Files
+*.tmp
+*.temp
+.cache/
+
+# Local Environment
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Dependencies (if any are added)
+node_modules/
+bower_components/
+
+# Build Output (if build process is added)
+dist/
+build/
+out/
+
+# Local Development Server Files
+.serve/
