@@ -392,8 +392,8 @@ function createCrystal(index) {
 
     // Randomly choose crystal image
     const crystalImages = [
-        '../TiT-HoAB-Product-Page-Images/TiT/delerium-chunk-1.webp',
-        '../TiT-HoAB-Product-Page-Images/TiT/delerium-chunk-5.webp'
+        'images/delerium-chunk-1.webp',
+        'images/delerium-chunk-5.webp'
     ];
 
     const randomImage = crystalImages[Math.floor(Math.random() * crystalImages.length)];
