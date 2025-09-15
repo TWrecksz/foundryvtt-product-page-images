@@ -348,8 +348,12 @@ window.addEventListener('load', function() {
     // Start periodic crystal spawning
     setInterval(spawnRandomCrystal, 8000);
 
-    // Log successful load
+    // Log successful load with debug info
     console.log('Terror in Tierhaven Documentation loaded successfully - Drakkenheim immersion active');
+    console.log('Elements created:', {
+        'page-border': document.querySelector('.page-border') ? 'Created' : 'Failed',
+        'toxic-haze': document.querySelector('.toxic-haze') ? 'Created' : 'Failed'
+    });
 });
 
 // ===== DRAKKENHEIM IMMERSION FUNCTIONS =====
@@ -392,8 +396,8 @@ function createCrystal(index) {
 
     // Randomly choose crystal image
     const crystalImages = [
-        'images/delerium-chunk-1.webp?v=5',
-        'images/delerium-chunk-5.webp?v=5'
+        'images/delerium-chunk-1.webp?v=6',
+        'images/delerium-chunk-5.webp?v=6'
     ];
 
     const randomImage = crystalImages[Math.floor(Math.random() * crystalImages.length)];
@@ -411,11 +415,12 @@ function createCrystal(index) {
         left: ${startX}px;
         top: ${startY}px;
         opacity: 0;
-        z-index: -1;
+        z-index: 10;
         pointer-events: none;
         filter: brightness(0.8) hue-rotate(${Math.random() * 60}deg);
         animation: floatUp 15s linear infinite;
         animation-delay: ${index * 0.5}s;
+        will-change: transform, opacity, filter;
     `;
 
     document.body.appendChild(crystal);
