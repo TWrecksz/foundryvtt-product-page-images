@@ -538,3 +538,62 @@ style.textContent = `
     }
 `;
 document.head.appendChild(style);
+
+// ===== PARALLAX SCROLLING EFFECTS =====
+
+// Enhanced parallax scrolling effects for immersive imagery
+window.addEventListener('scroll', function() {
+    const scrolled = window.pageYOffset;
+    const parallaxImages = document.querySelectorAll('.parallax-image');
+
+    parallaxImages.forEach((image, index) => {
+        const rect = image.parentElement.getBoundingClientRect();
+        const speed = 0.5 + (index * 0.1); // Different speeds for depth
+
+        // Only apply parallax when element is in viewport
+        if (rect.bottom >= 0 && rect.top <= window.innerHeight) {
+            const yPos = -(rect.top * speed);
+            image.style.transform = `translateY(${yPos}px)`;
+
+            // Add subtle rotation and scale effects
+            const rotationAngle = (rect.top * 0.02) % 360;
+            const scaleValue = 1 + (Math.abs(rect.top) * 0.0001);
+
+            image.style.filter = `
+                contrast(1.2)
+                brightness(0.7)
+                saturate(1.1)
+                hue-rotate(${rotationAngle}deg)
+            `;
+            image.style.transform += ` scale(${Math.min(scaleValue, 1.1)})`;
+        }
+    });
+});
+
+// Enhanced contamination effects on scroll
+let contaminationIntensity = 0;
+
+window.addEventListener('scroll', function() {
+    const scrollPercent = window.pageYOffset / (document.documentElement.scrollHeight - window.innerHeight);
+    contaminationIntensity = Math.min(scrollPercent * 2, 1);
+
+    // Increase toxic haze opacity as user scrolls deeper
+    const toxicHaze = document.querySelector('.toxic-haze');
+    if (toxicHaze) {
+        toxicHaze.style.opacity = 0.6 + (contaminationIntensity * 0.3);
+    }
+
+    // Intensify corruption background
+    const bodyAfter = document.body;
+    if (bodyAfter) {
+        bodyAfter.style.setProperty('--scroll-contamination', contaminationIntensity);
+    }
+
+    // Add dynamic creature sounds based on scroll position
+    if (window.drakkenheimAudio && contaminationIntensity > 0.7) {
+        // Trigger more intense effects at deeper scroll levels
+        if (Math.random() < 0.001) { // Very rare
+            window.drakkenheimAudio.playInfectionPulse();
+        }
+    }
+});

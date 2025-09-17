@@ -297,13 +297,13 @@ body::after {
   }
 }
 
-/* Enhanced Header with Glowing Effects */
+/* Enhanced Header with Immersive Imagery */
 .header {
   background:
     linear-gradient(135deg, var(--card-bg) 0%, var(--card-hover-bg) 100%),
     radial-gradient(ellipse at center, rgba(155, 77, 155, 0.1) 0%, transparent 70%);
   border-bottom: 3px solid var(--accent-primary);
-  padding: 40px 0;
+  padding: 60px 0;
   margin-bottom: 40px;
   box-shadow:
     0 4px 20px var(--shadow-medium),
@@ -311,6 +311,77 @@ body::after {
     inset 0 1px 0 rgba(255, 255, 255, 0.1);
   position: relative;
   overflow: hidden;
+  min-height: 400px;
+  display: flex;
+  align-items: center;
+}
+
+/* Hero Imagery Container */
+.hero-imagery {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 0;
+  overflow: hidden;
+}
+
+.hero-bg {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  transition: opacity 3s ease-in-out;
+  mix-blend-mode: overlay;
+  filter: contrast(1.2) brightness(0.7) saturate(1.1);
+}
+
+.hero-bg-1 {
+  animation: heroImageCycle 18s infinite;
+  opacity: 0.4;
+}
+
+.hero-bg-2 {
+  animation: heroImageCycle 18s infinite;
+  animation-delay: 6s;
+}
+
+.hero-bg-3 {
+  animation: heroImageCycle 18s infinite;
+  animation-delay: 12s;
+}
+
+@keyframes heroImageCycle {
+  0%, 20% {
+    opacity: 0;
+    transform: scale(1.05);
+    filter: contrast(1.2) brightness(0.7) saturate(1.1) hue-rotate(0deg);
+  }
+  25%, 45% {
+    opacity: 0.6;
+    transform: scale(1);
+    filter: contrast(1.3) brightness(0.8) saturate(1.2) hue-rotate(5deg);
+  }
+  50%, 80% {
+    opacity: 0;
+    transform: scale(1.02);
+    filter: contrast(1.1) brightness(0.6) saturate(1.0) hue-rotate(-3deg);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(1.05);
+    filter: contrast(1.2) brightness(0.7) saturate(1.1) hue-rotate(0deg);
+  }
+}
+
+/* Hero Content */
+.hero-content {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  width: 100%;
 }
 
 .header::before {
@@ -1685,6 +1756,323 @@ body::after {
     font-size: 1.2rem;
     width: 25px;
     height: 25px;
+  }
+}
+
+/* Module Showcase Visual Storytelling */
+.module-showcase {
+  position: relative;
+  margin: 50px 0;
+  padding: 40px;
+  background:
+    linear-gradient(135deg, rgba(26, 15, 26, 0.95) 0%, rgba(42, 21, 37, 0.9) 100%);
+  border-radius: 20px;
+  border: 1px solid var(--border-glow);
+  overflow: hidden;
+  backdrop-filter: blur(15px);
+  box-shadow:
+    0 8px 32px var(--shadow-medium),
+    0 0 40px var(--glow-subtle);
+}
+
+.showcase-imagery {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  display: flex;
+  gap: 15px;
+  z-index: 1;
+}
+
+.character-portrait, .creature-image {
+  width: 120px;
+  height: 120px;
+  object-fit: cover;
+  border-radius: 15px;
+  border: 2px solid var(--accent-primary);
+  box-shadow: 0 0 20px var(--glow-purple);
+  transition: all var(--transition-medium);
+  filter: contrast(1.1) brightness(0.9);
+}
+
+.character-portrait:hover, .creature-image:hover {
+  transform: scale(1.1) rotate(2deg);
+  box-shadow: 0 0 30px var(--glow-bright);
+  border-color: var(--accent-glow);
+}
+
+.enhanced-item {
+  position: relative;
+  z-index: 2;
+  margin-right: 160px;
+}
+
+/* Split Module Sections */
+.showcase-split {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  position: relative;
+  z-index: 2;
+}
+
+.module-section {
+  position: relative;
+  padding: 30px;
+  border-radius: 15px;
+  backdrop-filter: blur(10px);
+  border: 1px solid var(--border-subtle);
+  transition: all var(--transition-medium);
+}
+
+.tit-section {
+  background: linear-gradient(135deg,
+    rgba(139, 38, 53, 0.1) 0%,
+    rgba(74, 52, 34, 0.05) 100%);
+  border-color: var(--corruption-red);
+}
+
+.hoab-section {
+  background: linear-gradient(135deg,
+    rgba(61, 92, 42, 0.1) 0%,
+    rgba(122, 77, 92, 0.05) 100%);
+  border-color: var(--bile-green);
+}
+
+.module-section:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 30px var(--shadow-medium);
+}
+
+.section-header {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  margin-bottom: 20px;
+  position: relative;
+}
+
+.module-creature {
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 3px solid var(--accent-primary);
+  box-shadow: 0 0 20px var(--glow-purple);
+  filter: contrast(1.2) brightness(0.8);
+  transition: all var(--transition-medium);
+}
+
+.module-creature:hover {
+  transform: scale(1.15);
+  box-shadow: 0 0 30px var(--glow-bright);
+  filter: contrast(1.3) brightness(1.0) hue-rotate(10deg);
+}
+
+/* Environment Background for Maps Showcase */
+.environment-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 0;
+  opacity: 0.1;
+  mix-blend-mode: overlay;
+  overflow: hidden;
+}
+
+.environment-image {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: contrast(1.1) brightness(0.6) blur(1px);
+  animation: environmentFloat 20s ease-in-out infinite;
+}
+
+.environment-image.shipwreck {
+  animation-delay: 10s;
+  opacity: 0.7;
+  mix-blend-mode: multiply;
+}
+
+@keyframes environmentFloat {
+  0%, 100% {
+    transform: scale(1) translateX(0);
+    opacity: 0.08;
+  }
+  50% {
+    transform: scale(1.05) translateX(20px);
+    opacity: 0.15;
+  }
+}
+
+/* Parallax Scrolling Effects for Large Images */
+.parallax-container {
+  position: relative;
+  height: 300px;
+  overflow: hidden;
+  margin: 40px 0;
+  border-radius: 20px;
+  border: 1px solid var(--border-glow);
+}
+
+.parallax-image {
+  position: absolute;
+  top: -20%;
+  left: 0;
+  width: 100%;
+  height: 120%;
+  object-fit: cover;
+  transition: transform 0.1s ease-out;
+  filter: contrast(1.2) brightness(0.7) saturate(1.1);
+  mix-blend-mode: overlay;
+}
+
+.parallax-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg,
+    rgba(155, 77, 155, 0.3) 0%,
+    rgba(26, 15, 26, 0.6) 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
+}
+
+.parallax-text {
+  text-align: center;
+  color: var(--text-glow);
+  text-shadow: 2px 2px 4px var(--shadow-strong);
+}
+
+.parallax-text h3 {
+  font-size: 2.5rem;
+  margin-bottom: 10px;
+  text-shadow: 0 0 20px var(--glow-bright);
+}
+
+/* Responsive Adjustments */
+@media (max-width: 1024px) {
+  .showcase-split {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+
+  .enhanced-item {
+    margin-right: 0;
+    margin-bottom: 20px;
+  }
+
+  .showcase-imagery {
+    position: relative;
+    top: auto;
+    right: auto;
+    justify-content: center;
+    margin-bottom: 20px;
+  }
+}
+
+@media (max-width: 768px) {
+  .module-showcase {
+    padding: 25px;
+    margin: 30px 0;
+  }
+
+  .character-portrait, .creature-image {
+    width: 80px;
+    height: 80px;
+  }
+
+  .module-creature {
+    width: 60px;
+    height: 60px;
+  }
+
+  .section-header {
+    flex-direction: column;
+    text-align: center;
+    gap: 15px;
+  }
+
+  .parallax-container {
+    height: 200px;
+  }
+
+  .parallax-text h3 {
+    font-size: 1.8rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .showcase-imagery {
+    gap: 10px;
+  }
+
+  .character-portrait, .creature-image {
+    width: 60px;
+    height: 60px;
+  }
+
+  .module-creature {
+    width: 50px;
+    height: 50px;
+  }
+
+  .module-showcase {
+    padding: 20px;
+  }
+
+  .parallax-container {
+    height: 150px;
+  }
+}
+
+/* Visual Contamination Effects for Images */
+.contaminated-image {
+  position: relative;
+  overflow: hidden;
+  border-radius: 15px;
+}
+
+.contaminated-image::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background:
+    radial-gradient(ellipse at 30% 70%, rgba(139, 38, 53, 0.3) 0%, transparent 50%),
+    radial-gradient(ellipse at 70% 30%, rgba(61, 92, 42, 0.2) 0%, transparent 40%);
+  mix-blend-mode: overlay;
+  opacity: 0;
+  transition: opacity var(--transition-medium);
+  z-index: 1;
+}
+
+.contaminated-image:hover::before {
+  opacity: 1;
+  animation: contaminationSpread 2s ease-in-out;
+}
+
+@keyframes contaminationSpread {
+  0% {
+    transform: scale(0.8);
+    opacity: 0;
+  }
+  50% {
+    transform: scale(1.1);
+    opacity: 0.8;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
   }
 }
 
