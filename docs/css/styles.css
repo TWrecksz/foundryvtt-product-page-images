@@ -2,12 +2,19 @@
 /* Enhanced Dark Fantasy Drakkenheim Aesthetic */
 
 :root {
-  /* Enhanced Dark Fantasy Color Palette */
+  /* Enhanced Dark Fantasy Color Palette with Contamination */
   --primary-bg: #0a0510;
   --secondary-bg: #1a0f1a;
   --tertiary-bg: #2a1525;
   --card-bg: #2f1a2f;
   --card-hover-bg: #3a1f3a;
+
+  /* Contamination and Body Horror Colors */
+  --corruption-red: #8b2635;
+  --decay-brown: #4a3422;
+  --bile-green: #3d5c2a;
+  --flesh-pink: #7a4d5c;
+  --bone-white: #a89d95;
 
   /* Drakkenheim Purple/Magenta Tones */
   --accent-primary: #9b4d9b;
@@ -1258,6 +1265,450 @@ table::before {
   0% { left: -100%; }
   50% { left: 100%; }
   100% { left: 100%; }
+}
+
+/* Body Horror and Contamination Effects */
+/* Pulsing Corruption Veins Background */
+body::after {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image:
+    /* Organic vein-like corruption patterns */
+    radial-gradient(ellipse at 10% 20%, rgba(139, 38, 53, 0.15) 0%, transparent 40%),
+    radial-gradient(ellipse at 90% 80%, rgba(74, 52, 34, 0.12) 0%, transparent 35%),
+    radial-gradient(ellipse at 30% 70%, rgba(61, 92, 42, 0.1) 0%, transparent 30%),
+    radial-gradient(ellipse at 70% 30%, rgba(122, 77, 92, 0.08) 0%, transparent 45%),
+    /* Subtle corruption spreading */
+    linear-gradient(45deg,
+      transparent 0%,
+      rgba(139, 38, 53, 0.05) 25%,
+      transparent 50%,
+      rgba(74, 52, 34, 0.03) 75%,
+      transparent 100%);
+  animation: corruptionPulse 15s ease-in-out infinite alternate;
+  pointer-events: none;
+  z-index: -2;
+  mix-blend-mode: multiply;
+}
+
+@keyframes corruptionPulse {
+  0% {
+    opacity: 0.3;
+    transform: scale(1);
+    filter: hue-rotate(0deg) contrast(1);
+  }
+  33% {
+    opacity: 0.5;
+    transform: scale(1.02);
+    filter: hue-rotate(5deg) contrast(1.1);
+  }
+  66% {
+    opacity: 0.4;
+    transform: scale(0.98);
+    filter: hue-rotate(-3deg) contrast(0.9);
+  }
+  100% {
+    opacity: 0.6;
+    transform: scale(1.01);
+    filter: hue-rotate(2deg) contrast(1.05);
+  }
+}
+
+/* Contaminated Content Cards with Living Breathing Effect */
+.content {
+  position: relative;
+  overflow: hidden;
+}
+
+.content::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background:
+    /* Organic membrane-like texture */
+    radial-gradient(ellipse at 15% 25%, rgba(122, 77, 92, 0.1) 0%, transparent 60%),
+    radial-gradient(ellipse at 85% 75%, rgba(139, 38, 53, 0.08) 0%, transparent 50%),
+    radial-gradient(ellipse at 50% 50%, rgba(74, 52, 34, 0.06) 0%, transparent 70%);
+  animation: organicBreathe 8s ease-in-out infinite;
+  pointer-events: none;
+  z-index: 0;
+  border-radius: inherit;
+  mix-blend-mode: overlay;
+}
+
+@keyframes organicBreathe {
+  0%, 100% {
+    opacity: 0.2;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.4;
+    transform: scale(1.005);
+  }
+}
+
+/* Ensure content text stays above organic overlay */
+.content > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* Horror-themed FAQ Items with Infection Spread */
+.faq-item {
+  position: relative;
+  overflow: hidden;
+}
+
+.faq-item::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 5px;
+  height: 100%;
+  background: linear-gradient(180deg,
+    var(--corruption-red) 0%,
+    var(--flesh-pink) 30%,
+    var(--decay-brown) 60%,
+    var(--bile-green) 100%);
+  opacity: 0;
+  animation: infectionSpread 6s ease-in-out infinite;
+  border-radius: 0 15px 15px 0;
+}
+
+@keyframes infectionSpread {
+  0%, 70% {
+    opacity: 0;
+    width: 5px;
+  }
+  15%, 55% {
+    opacity: 0.6;
+    width: 8px;
+  }
+  30%, 40% {
+    opacity: 0.8;
+    width: 12px;
+  }
+}
+
+.faq-item:hover::after {
+  animation: infectionSpreadHover 2s ease-in-out infinite;
+}
+
+@keyframes infectionSpreadHover {
+  0%, 100% {
+    opacity: 0.6;
+    width: 8px;
+  }
+  50% {
+    opacity: 1;
+    width: 15px;
+  }
+}
+
+/* Delerium Crystal Contamination Effects */
+.alert {
+  position: relative;
+  overflow: hidden;
+}
+
+.alert-info::before {
+  background: linear-gradient(90deg,
+    transparent,
+    rgba(155, 77, 155, 0.3),
+    rgba(74, 143, 212, 0.2),
+    transparent);
+  animation: deleriumPulse 3s ease-in-out infinite;
+}
+
+.alert-warning::before {
+  background: linear-gradient(90deg,
+    transparent,
+    rgba(212, 160, 23, 0.3),
+    rgba(139, 38, 53, 0.2),
+    transparent);
+  animation: corruptionWarning 2.5s ease-in-out infinite;
+}
+
+.alert-danger::before {
+  background: linear-gradient(90deg,
+    transparent,
+    rgba(212, 74, 74, 0.4),
+    rgba(139, 38, 53, 0.3),
+    transparent);
+  animation: dangerContamination 2s ease-in-out infinite;
+}
+
+@keyframes deleriumPulse {
+  0%, 100% { opacity: 0.3; }
+  50% { opacity: 0.7; }
+}
+
+@keyframes corruptionWarning {
+  0%, 100% { opacity: 0.4; }
+  50% { opacity: 0.8; }
+}
+
+@keyframes dangerContamination {
+  0%, 100% { opacity: 0.5; }
+  50% { opacity: 1; }
+}
+
+/* Organic Button Mutations */
+.btn {
+  position: relative;
+  overflow: hidden;
+}
+
+.btn::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background:
+    radial-gradient(ellipse at 20% 80%, rgba(122, 77, 92, 0.15) 0%, transparent 60%),
+    radial-gradient(ellipse at 80% 20%, rgba(155, 77, 155, 0.1) 0%, transparent 50%);
+  opacity: 0;
+  transition: opacity var(--transition-medium);
+  border-radius: inherit;
+  z-index: -1;
+}
+
+.btn:hover::after {
+  opacity: 1;
+  animation: organicMutation 1.5s ease-in-out infinite;
+}
+
+@keyframes organicMutation {
+  0%, 100% {
+    transform: scale(1) rotate(0deg);
+    opacity: 0.6;
+  }
+  50% {
+    transform: scale(1.02) rotate(0.5deg);
+    opacity: 0.8;
+  }
+}
+
+/* Contaminated Text Selection */
+::selection {
+  background: linear-gradient(45deg, var(--corruption-red), var(--flesh-pink));
+  color: var(--bone-white);
+  text-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+::-moz-selection {
+  background: linear-gradient(45deg, var(--corruption-red), var(--flesh-pink));
+  color: var(--bone-white);
+  text-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+/* Horrific Navigation Hover Effects */
+.nav a {
+  position: relative;
+  overflow: hidden;
+}
+
+.nav a::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: linear-gradient(90deg,
+    var(--corruption-red) 0%,
+    var(--flesh-pink) 25%,
+    var(--accent-primary) 50%,
+    var(--bile-green) 75%,
+    var(--decay-brown) 100%);
+  transform: translateY(100%);
+  transition: transform var(--transition-medium);
+  border-radius: 25px 25px 0 0;
+}
+
+.nav a:hover::after,
+.nav a.active::after {
+  transform: translateY(0);
+  animation: contaminationSpread 1s ease-in-out;
+}
+
+@keyframes contaminationSpread {
+  0% {
+    width: 0;
+    left: 50%;
+  }
+  100% {
+    width: 100%;
+    left: 0;
+  }
+}
+
+/* Audio Atmosphere Controls */
+.audio-controls {
+  position: fixed;
+  bottom: 90px;
+  right: 30px;
+  background: linear-gradient(135deg, rgba(47, 26, 47, 0.9) 0%, rgba(58, 31, 58, 0.9) 100%);
+  backdrop-filter: blur(10px);
+  border: 1px solid var(--border-glow);
+  border-radius: 25px;
+  padding: 10px 15px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  z-index: 1000;
+  box-shadow:
+    0 4px 20px var(--shadow-medium),
+    0 0 20px var(--glow-purple);
+  transition: all var(--transition-medium);
+}
+
+.audio-controls:hover {
+  transform: translateY(-2px);
+  box-shadow:
+    0 6px 25px var(--shadow-medium),
+    0 0 30px var(--glow-bright);
+}
+
+.audio-toggle {
+  background: none;
+  border: none;
+  color: var(--accent-glow);
+  font-size: 1.5rem;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  padding: 0;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.audio-toggle:hover {
+  transform: scale(1.2);
+  filter: drop-shadow(0 0 10px var(--glow-bright));
+}
+
+.audio-toggle:active {
+  transform: scale(1.1);
+}
+
+.audio-volume {
+  width: 100px;
+  height: 4px;
+  -webkit-appearance: none;
+  appearance: none;
+  background: linear-gradient(90deg,
+    var(--corruption-red) 0%,
+    var(--accent-primary) 50%,
+    var(--accent-tertiary) 100%);
+  border-radius: 2px;
+  outline: none;
+  opacity: 0.7;
+  transition: opacity var(--transition-fast);
+}
+
+.audio-volume:hover {
+  opacity: 1;
+}
+
+.audio-volume::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 14px;
+  height: 14px;
+  background: var(--accent-glow);
+  border-radius: 50%;
+  cursor: pointer;
+  box-shadow: 0 0 10px var(--glow-purple);
+  transition: all var(--transition-fast);
+}
+
+.audio-volume::-webkit-slider-thumb:hover {
+  background: var(--text-glow);
+  box-shadow: 0 0 15px var(--glow-bright);
+  transform: scale(1.2);
+}
+
+.audio-volume::-moz-range-thumb {
+  width: 14px;
+  height: 14px;
+  background: var(--accent-glow);
+  border-radius: 50%;
+  cursor: pointer;
+  border: none;
+  box-shadow: 0 0 10px var(--glow-purple);
+  transition: all var(--transition-fast);
+}
+
+.audio-volume::-moz-range-thumb:hover {
+  background: var(--text-glow);
+  box-shadow: 0 0 15px var(--glow-bright);
+  transform: scale(1.2);
+}
+
+@media (max-width: 768px) {
+  .audio-controls {
+    bottom: 70px;
+    right: 20px;
+    padding: 8px 12px;
+  }
+
+  .audio-volume {
+    width: 80px;
+  }
+}
+
+@media (max-width: 480px) {
+  .audio-controls {
+    bottom: 65px;
+    right: 15px;
+    padding: 6px 10px;
+  }
+
+  .audio-volume {
+    width: 60px;
+  }
+
+  .audio-toggle {
+    font-size: 1.2rem;
+    width: 25px;
+    height: 25px;
+  }
+}
+
+/* Scrollbar with Corruption Theme */
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg,
+    var(--corruption-red) 0%,
+    var(--accent-primary) 30%,
+    var(--flesh-pink) 60%,
+    var(--accent-tertiary) 100%);
+  border-radius: 6px;
+  border: 2px solid var(--primary-bg);
+  position: relative;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg,
+    var(--flesh-pink) 0%,
+    var(--accent-tertiary) 25%,
+    var(--accent-glow) 50%,
+    var(--corruption-red) 100%);
+  box-shadow:
+    0 0 10px var(--glow-purple),
+    inset 0 0 5px rgba(139, 38, 53, 0.3);
 }
 
 /* Focus States for Accessibility */
