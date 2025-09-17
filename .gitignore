@@ -9,6 +9,15 @@ CLAUDE.md
 .copilot/
 .github/copilot-instructions.md
 .serena
+.bmad-2d-phaser-game-dev
+.bmad-2d-unity-game-dev
+.bmad-core
+.bmad-creative-writing
+.bmad-godot-game-dev
+.bmad-infrastructure-devops
+expansion-packs
+agents
+teams
 
 # IDE and Editor Files
 .vscode/
