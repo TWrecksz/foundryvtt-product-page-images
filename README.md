@@ -8,7 +8,7 @@ This repository contains the product page images and documentation website for t
 
 ## 🌐 Live Documentation
 
-The complete documentation is available at: [GitHub Pages](https://your-username.github.io/foundryvtt-product-page-images/)
+The complete documentation is available at: [GitHub Pages](https://twrecksz.github.io/foundryvtt-product-page-images/)
 
 ## 📁 Project Structure
 
