@@ -553,23 +553,23 @@ window.addEventListener('scroll', function() {
         // Only apply parallax when element is in viewport
         if (rect.bottom >= 0 && rect.top <= window.innerHeight) {
             const yPos = -(rect.top * speed);
-            image.style.transform = `translateY(${yPos}px)`;
 
             // Add subtle rotation and scale effects
             const rotationAngle = (rect.top * 0.02) % 360;
             const scaleValue = 1 + (Math.abs(rect.top) * 0.0001);
-
+            
+            // Combine all transforms in one assignment
+            image.style.transform = `translateY(${yPos}px) scale(${Math.min(scaleValue, 1.1)})`;
+            
             image.style.filter = `
                 contrast(1.2)
                 brightness(0.7)
                 saturate(1.1)
                 hue-rotate(${rotationAngle}deg)
             `;
-            image.style.transform += ` scale(${Math.min(scaleValue, 1.1)})`;
         }
     });
 });
-
 // Enhanced contamination effects on scroll
 let contaminationIntensity = 0;
 
@@ -593,7 +593,9 @@ window.addEventListener('scroll', function() {
     if (window.drakkenheimAudio && contaminationIntensity > 0.7) {
         // Trigger more intense effects at deeper scroll levels
         if (Math.random() < 0.001) { // Very rare
-            window.drakkenheimAudio.playInfectionPulse();
+            if (typeof window.drakkenheimAudio.playInfectionPulse === 'function') {
+                window.drakkenheimAudio.playInfectionPulse();
+            }
         }
     }
 });
